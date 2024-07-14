@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/todo_body.dart';
+import '../util/todo_body.dart';
 
 class HomePage extends StatefulWidget{
   const HomePage ({super.key});
@@ -9,6 +9,18 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage>{
+
+  List todoList = [
+    ["Create Notes", false],
+    ["Create Notes", false]
+  ];
+
+void checkboxChanged(bool? value, int index) {
+  setState(() {
+    todoList[index][1] = !todoList [index] [1];
+  });
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,10 +29,15 @@ class _HomePageState extends State<HomePage>{
         title: Text('Kill yourself'),
         elevation: 0,
       ),
-      body: ListView(
-        children: [
-          TodoBody(),
-        ],
+      body: ListView.builder(
+        itemCount: todoList.length,
+        itemBuilder: (context, index) {
+          return TodoBody(
+            taskName: todoList[index][0],
+            taskComplete: todoList[index][1],
+            onChanged: (value) => checkboxChanged(value, index)
+          );
+        }
       ),
     );
   }
