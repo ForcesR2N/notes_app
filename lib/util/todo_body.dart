@@ -19,7 +19,7 @@ class TodoBody extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(24),
         decoration: BoxDecoration(
-            color: Colors.lightBlue, borderRadius: BorderRadius.circular(12)),
+            color: Colors.blueAccent, borderRadius: BorderRadius.circular(12)),
         child: Row(
           children: [
             Checkbox(
