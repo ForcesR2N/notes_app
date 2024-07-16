@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../util/todo_body.dart';
 
@@ -21,13 +23,21 @@ void checkboxChanged(bool? value, int index) {
   });
 }
 
+void createNewTask(){
+  showDialog(context: context, builder: (context));
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent[200],
       appBar: AppBar(
-        title: Text('Kill yourself'),
+        title: Text('kill yourself'),
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: createNewTask,
+      child: Icon(Icons.add),
       ),
       body: ListView.builder(
         itemCount: todoList.length,
